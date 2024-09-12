@@ -31,6 +31,6 @@ router.delete('/:id',async(req,res)=>{
     const {id} = req.params;
     const result = await CreditCard.destroy({where:{id}});
     res.json(result);
-})
+});
 
 export default router;
