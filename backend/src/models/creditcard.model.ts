@@ -1,13 +1,15 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/db.config";
-import Bank from "./bank.model";
-
 
 const CreditCard = sequelize.define('CreditCard',{
     id:{
         type:DataTypes.INTEGER,
         autoIncrement:true,
         primaryKey:true,
+    },
+    bank_name: {
+        type: DataTypes.STRING,
+        allowNull: false,
     },
     card_name:{
         type:DataTypes.STRING,
@@ -17,11 +19,11 @@ const CreditCard = sequelize.define('CreditCard',{
         type: DataTypes.BOOLEAN,
         defaultValue:true,
     },
-    createdAt:{
+    created_at:{
         type:DataTypes.DATE,
         defaultValue:DataTypes.NOW,
     },
 });
 
-CreditCard.belongsTo(Bank);
+
 export default CreditCard;
