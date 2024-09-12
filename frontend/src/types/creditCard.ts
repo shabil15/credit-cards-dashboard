@@ -1,7 +1,7 @@
 export interface CreditCard {
     id: number;
-    bankName: string;
-    cardName: string;
+    bank_name: string;
+    card_name: string;
     enabled: boolean;
     createdAt: string;
   }

@@ -1,25 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import { CreditCard } from '../types/creditCard';
 import { getCreditCards } from '../services/creditCardService';
-
+import AddEditModal from './addEditModal';
+import DeleteModal from './deleteModal';
 const CreditCards: React.FC = () => {
   const [creditCards, setCreditCards] = useState<CreditCard[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [selectedCard, setSelectedCard] = useState<CreditCard | null>(null);
+  const [showAddEditModal, setShowAddEditModal] = useState<boolean>(false);
+  const [showDeleteModal,setShowDeleteModal] = useState<boolean>(false);
  
-  useEffect(() => {
-    const fetchCreditCards = async () => {
-      try {
-        const cards = await getCreditCards();
-        setCreditCards(cards);
-      } catch (error) {
-        console.error('Failed to fetch credit cards', error);
-      } finally {
-        setLoading(false);
-      }
+  const fetchCreditCards = async () => {
+    try {
+      const cards = await getCreditCards();
+      setCreditCards(cards);
+      console.log(cards);
+    } catch (error) {
+      console.error('Failed to fetch credit cards', error);
+    } finally {
+      setLoading(false);
     };
+  };
 
+  useEffect(() => {
     fetchCreditCards();
   }, []);
+
+  const handleAddEdit = (card:CreditCard)=>{
+    setSelectedCard(card);
+    setShowAddEditModal(true);
+  }
+
+  const handleDelete =(card: CreditCard) =>{
+    setSelectedCard(card);
+    setShowDeleteModal(true);
+  }
 
   
 
@@ -33,6 +48,7 @@ const CreditCards: React.FC = () => {
         <h1 className="text-xl font-bold">Credit Cards</h1>
         <button
           className="bg-blue-500 text-white px-4 py-2 rounded"
+          onClick={()=>setShowAddEditModal(true)}
         >
           Add Card
         </button>
@@ -53,8 +69,8 @@ const CreditCards: React.FC = () => {
           {creditCards.map((card) => (
             <tr key={card.id}>
               <td className="border px-4 py-2">{card.id}</td>
-              <td className="border px-4 py-2">{card.bankName}</td>
-              <td className="border px-4 py-2">{card.cardName}</td>
+              <td className="border px-4 py-2">{card.bank_name}</td>
+              <td className="border px-4 py-2">{card.card_name}</td>
               <td className="border px-4 py-2">
                 <input type="checkbox" checked={card.enabled} readOnly />
               </td>
@@ -62,12 +78,12 @@ const CreditCards: React.FC = () => {
               <td className="border px-4 py-2">
                 <button
                   
-                  className="bg-yellow-500 text-white px-2 py-1 mr-2 rounded"
+                  className="bg-yellow-500 text-white px-2 py-1 mr-2 rounded" onClick={()=> handleAddEdit(card)}
                 >
                   Edit
                 </button>
                 <button
-                  className="bg-red-500 text-white px-2 py-1 rounded"
+                  className="bg-red-500 text-white px-2 py-1 rounded"  onClick={() => handleDelete(card)}
                 >
                   Delete
                 </button>
@@ -76,6 +92,15 @@ const CreditCards: React.FC = () => {
           ))}
         </tbody>
       </table>
+
+      {
+        showAddEditModal && (
+          <AddEditModal card={selectedCard} onClose={()=>setShowAddEditModal(false)} onSave={fetchCreditCards}/>
+        )}
+
+      {showDeleteModal && (
+        <DeleteModal card={selectedCard} onClose={() => setShowDeleteModal(false)} onDelete={fetchCreditCards} />
+      )}
     </div>
   );
 };
