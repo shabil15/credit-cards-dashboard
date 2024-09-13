@@ -60,13 +60,13 @@ git clone https://github.com/shabil15/credit-cards-dashboard.git credit-dashboar
      ```
    - Create the CreditCards Table:
      ```sql
-     CREATE TABLE CreditCards (
-       id INT AUTO_INCREMENT PRIMARY KEY,
-       bank_name VARCHAR(255) NOT NULL,
-       card_name VARCHAR(255) NOT NULL,
-       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-       enabled BOOLEAN DEFAULT TRUE
-     );
+CREATE TABLE credit_cards (
+    id SERIAL PRIMARY KEY,
+    bank_name VARCHAR(255),
+    card_name VARCHAR(255),
+    enabled BOOLEAN,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
      ```
 
 5. Run the backend server:
