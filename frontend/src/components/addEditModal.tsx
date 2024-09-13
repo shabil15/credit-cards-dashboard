@@ -55,7 +55,7 @@ const AddEditModal: React.FC<AddEditProps> = ({ card, onClose, onSave }) => {
     }
 
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0; // Returns true if no errors
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {

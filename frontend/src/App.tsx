@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import CreditCards from "./components/creditCards";
 import Banks from "./components/banks";
 import { BgLightGridGradient2 } from "./components/background";

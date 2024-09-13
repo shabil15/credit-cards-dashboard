@@ -54,7 +54,7 @@ const CreditCards: React.FC = () => {
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
-    setPage(1); // Reset to page 1 when searching
+    setPage(1);
   };
 
   const handlePageChange = (newPage: number) => {
@@ -71,7 +71,7 @@ const CreditCards: React.FC = () => {
 
   return (
     <div className="container px-4">
-       <ToastContainer />
+      <ToastContainer />
       <div className="flex flex-col md:flex-row justify-between items-center mb-4 space-y-4 md:space-y-0">
         <h1 className="text-2xl font-bold text-center md:text-left">
           Credit Cards

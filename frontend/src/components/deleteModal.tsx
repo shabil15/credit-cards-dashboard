@@ -1,6 +1,6 @@
-import React from 'react';
-import { CreditCard } from '../types/creditCard';
-import { deleteCreditCard } from '../services/creditCardService';
+import React from "react";
+import { CreditCard } from "../types/creditCard";
+import { deleteCreditCard } from "../services/creditCardService";
 import { toast } from "react-toastify";
 
 interface DeleteModalProps {
@@ -9,7 +9,11 @@ interface DeleteModalProps {
   onDelete: () => void;
 }
 
-const DeleteModal: React.FC<DeleteModalProps> = ({ card, onClose, onDelete }) => {
+const DeleteModal: React.FC<DeleteModalProps> = ({
+  card,
+  onClose,
+  onDelete,
+}) => {
   const handleDelete = async () => {
     if (card) {
       await deleteCreditCard(card.id);
@@ -22,7 +26,9 @@ const DeleteModal: React.FC<DeleteModalProps> = ({ card, onClose, onDelete }) =>
   return (
     <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center">
       <div className="relative p-6 w-80 rounded-3xl shadow-lg backdrop-blur-lg bg-white bg-opacity-20 border border-white border-opacity-30">
-        <h2 className="text-xl font-bold mb-4 text-center text-white">Confirm Deletion</h2>
+        <h2 className="text-xl font-bold mb-4 text-center text-white">
+          Confirm Deletion
+        </h2>
         <p className="text-center mb-6 text-white">Are you sure?</p>
         <hr className="border-gray-400 border-opacity-30 mb-4" />
         <div className="flex">
