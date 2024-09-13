@@ -24,7 +24,7 @@ This project is a simple admin dashboard designed to manage credit cards. It pro
 To get started, clone the repository:
 
 ```bash
-git clone https://github.com/BalajiDyavanpalli7030/pneuma-web.git credit-card-dashboard
+(https://github.com/shabil15/credit-cards-dashboard.git)
 ```
 
 ### Backend Setup
