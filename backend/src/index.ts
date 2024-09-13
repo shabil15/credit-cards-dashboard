@@ -1,9 +1,12 @@
+
 import express from 'express';
 import sequelize from './config/db.config';
 import crediCardRoutes from './routes/creditCards';
-
+import cors from 'cors';
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 app.use('/api/credit-cards',crediCardRoutes);
 
