@@ -63,7 +63,7 @@ git clone https://github.com/shabil15/credit-cards-dashboard.git credit-dashboar
      CREATE TABLE CreditCards (
        id INT AUTO_INCREMENT PRIMARY KEY,
        bank_name VARCHAR(255) NOT NULL,
-       credit_card_name VARCHAR(255) NOT NULL,
+       card_name VARCHAR(255) NOT NULL,
        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
        enabled BOOLEAN DEFAULT TRUE
      );
