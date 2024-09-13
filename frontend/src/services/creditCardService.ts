@@ -3,9 +3,28 @@ import { CreditCard, Bank } from "../types/creditCard";
 
 const API_URL = "http://localhost:8000/api";
 
-export const getCreditCards = async (): Promise<CreditCard[]> => {
-  const response = await axios.get(`${API_URL}/credit-cards`);
-  return response.data;
+export const getCreditCards = async (
+  page: number = 1,
+  search: string = "",
+  limit: number = 7
+): Promise<{ data: CreditCard[], totalPages: number, totalItems: number }> => {
+  try {
+    const response = await axios.get(`${API_URL}/credit-cards`, {
+      params: {
+        page,
+        search,
+        limit,
+      },
+    });
+    return {
+      data: response.data.creditCards,
+      totalPages: response.data.totalPages,
+      totalItems: response.data.totalItems,
+    };
+  } catch (error) {
+    console.error("Error fetching credit cards:", error);
+    throw error;
+  }
 };
 
 export const addCreditCard = async (
