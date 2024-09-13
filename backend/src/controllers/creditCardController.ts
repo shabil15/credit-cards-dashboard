@@ -2,6 +2,8 @@ import { Request, Response } from "express";
 import CreditCard from "../models/creditcard.model";
 import { Op, WhereOptions } from "sequelize";
 
+
+//Fetches credit cards from the database with optional pagination and search functionality.
 export const getCreditCards = async (req: Request, res: Response) => {
   try {
     const page = Math.max(1, parseInt(req.query.page as string) || 1);
@@ -43,7 +45,7 @@ export const getCreditCards = async (req: Request, res: Response) => {
   }
 };
 
-
+// Adds a new credit card to the database.
 export const addCreditCard = async (req: Request, res: Response) => {
   const { bank_name, card_name, enabled } = req.body;
   try {
@@ -54,6 +56,7 @@ export const addCreditCard = async (req: Request, res: Response) => {
   }
 };
 
+//Updates an existing credit card in the database.
 export const updateCreditCard = async (req: Request, res: Response) => {
   const { id } = req.params;
   const { bank_name, card_name, enabled } = req.body;
@@ -70,6 +73,7 @@ export const updateCreditCard = async (req: Request, res: Response) => {
   }
 };
 
+//Deletes a credit card from the database.
 export const deleteCreditCard = async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
