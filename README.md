@@ -102,4 +102,4 @@ git clone https://github.com/shabil15/credit-cards-dashboard.git credit-dashboar
 - **Dashboard Interface**: Once the frontend server is running, you can access the dashboard in your web browser. Use the provided UI to manage credit card entries.
 - **API Endpoints**: The backend provides endpoints to interact with credit card data. The frontend communicates with these endpoints to perform CRUD operations.
 
-![Alt text]([https://collection.cloudinary.com/dmpnhhugi/2cdc2d901434af3e0e41047dbcede34e](https://github.com/shabil15/credit-cards-dashboard/blob/main/frontend/public/Credit_dashboard.JPG))
+![Dashboard](./frontend/public/Credit_dashboard.JPG))
